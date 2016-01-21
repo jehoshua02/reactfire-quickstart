@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "Just me learning ReactFire.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "watch": "webpack -w",
+    "deploy": "firebase deploy"
   },
   "repository": {
     "type": "git",
@@ -14,5 +17,15 @@
   "bugs": {
     "url": "https://github.com/jehoshua02/reactfire-quickstart/issues"
   },
-  "homepage": "https://github.com/jehoshua02/reactfire-quickstart#readme"
+  "homepage": "https://github.com/jehoshua02/reactfire-quickstart#readme",
+  "dependencies": {
+    "reactfire": "^0.5.1"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.11.1",
+    "browser-sync-webpack-plugin": "^1.0.1",
+    "firebase-tools": "^2.2.0",
+    "html-webpack-plugin": "^2.7.1",
+    "webpack": "^1.12.11"
+  }
 }
