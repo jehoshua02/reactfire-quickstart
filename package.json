@@ -1,0 +1,18 @@
+{
+  "name": "reactfire-quickstart",
+  "version": "1.0.0",
+  "description": "Just me learning ReactFire.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jehoshua02/reactfire-quickstart.git"
+  },
+  "author": "Joshua Stoutenburg <jehoshua02@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jehoshua02/reactfire-quickstart/issues"
+  },
+  "homepage": "https://github.com/jehoshua02/reactfire-quickstart#readme"
+}
