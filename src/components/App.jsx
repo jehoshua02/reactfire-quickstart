@@ -6,20 +6,27 @@ var App = React.createClass({
   mixins: [ReactFireMixin],
   render: function () {
     return (
-      <ul>
-        {this.state.items.map((item) => {
-          return <li key={item['.key']}>{item['.value']}</li>;
-        })}
-      </ul>
+      <div>
+        <label>
+          <input type="text" placeholder="Add Item" onKeyUp={this.addItem} />
+        </label>
+        <ul>
+          {this.state.items.map((item) => {
+            return <li key={item['.key']}>{item['.value']}</li>;
+          })}
+        </ul>
+      </div>
     );
   },
   componentWillMount: function() {
     var ref = new Firebase("https://jehoshua02-qs.firebaseio.com/items");
-    ref.push(Math.random());
-    ref.push(Math.random());
-    ref.push(Math.random());
-    ref.push(Math.random());
     this.bindAsArray(ref, "items");
+  },
+  addItem: function (e) {
+    if (e.key.toLowerCase() === 'enter') {
+      this.firebaseRefs.items.push(e.target.value);
+      e.target.value = '';
+    }
   }
 });
 
