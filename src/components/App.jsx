@@ -12,7 +12,15 @@ var App = React.createClass({
         </label>
         <ul>
           {this.state.items.map((item) => {
-            return <li key={item['.key']}>{item['.value']} - <span onClick={this.removeItem.bind(this, item['.key'])}>X</span></li>;
+            return (
+              <li key={item['.key']}>
+                {item['.value']}
+                <span
+                  onClick={this.removeItem.bind(this, item['.key'])}
+                  style={{cursor: 'pointer'}}
+                > [remove]</span>
+              </li>
+            );
           })}
         </ul>
       </div>
