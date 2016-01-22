@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/jehoshua02/reactfire-quickstart#readme",
   "dependencies": {
+    "firebase": "^2.3.2",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
     "reactfire": "^0.5.1"
