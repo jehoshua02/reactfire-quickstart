@@ -12,7 +12,7 @@ var App = React.createClass({
         </label>
         <ul>
           {this.state.items.map((item) => {
-            return <li key={item['.key']}>{item['.value']}</li>;
+            return <li key={item['.key']}>{item['.value']} - <span onClick={this.removeItem.bind(this, item['.key'])}>X</span></li>;
           })}
         </ul>
       </div>
@@ -27,6 +27,9 @@ var App = React.createClass({
       this.firebaseRefs.items.push(e.target.value);
       e.target.value = '';
     }
+  },
+  removeItem: function (key) {
+    this.firebaseRefs.items.child(key).remove();
   }
 });
 
