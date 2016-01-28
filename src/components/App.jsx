@@ -1,6 +1,7 @@
 import React from 'react';
 import Firebase from 'firebase';
 import ReactFireMixin from 'reactfire';
+import Item from './Item';
 
 var App = React.createClass({
   mixins: [ReactFireMixin],
@@ -8,21 +9,21 @@ var App = React.createClass({
     return (
       <div>
         <label>
-          <input type="text" placeholder="Add Item" onKeyUp={this.addItem} />
+          <input type="text" placeholder="Add Item" onKeyUp={this.add} />
         </label>
-        <ul>
+        <div>
           {this.state.items.map((item) => {
             return (
-              <li key={item['.key']}>
-                {item['.value']}
-                <span
-                  onClick={this.removeItem.bind(this, item['.key'])}
-                  style={{cursor: 'pointer'}}
-                > [remove]</span>
-              </li>
+              <Item
+                id={item['.key']}
+                value={item['.value']}
+                update={this.update}
+                remove={this.remove}
+                key={item['.key']}
+              />
             );
           })}
-        </ul>
+        </div>
       </div>
     );
   },
@@ -30,14 +31,17 @@ var App = React.createClass({
     var ref = new Firebase("https://jehoshua02-qs.firebaseio.com/items");
     this.bindAsArray(ref, "items");
   },
-  addItem: function (e) {
+  add: function (e) {
     if (e.key.toLowerCase() === 'enter') {
       this.firebaseRefs.items.push(e.target.value);
       e.target.value = '';
     }
   },
-  removeItem: function (key) {
-    this.firebaseRefs.items.child(key).remove();
+  update: function (id, value) {
+    this.firebaseRefs.items.child(id).set(value);
+  },
+  remove: function (id) {
+    this.firebaseRefs.items.child(id).remove();
   }
 });
 
